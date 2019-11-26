@@ -1,0 +1,18 @@
+--- a/Helper/Data.php
++++ b/Helper/Data.php
+@@ -194,6 +194,15 @@ class Data extends AbstractHelper
+             'jp' => 'JPY'
+         ];
+ 
++        $defaultCountry = $this->scopeConfig->getValue(
++            \Magento\Directory\Helper\Data::XML_PATH_DEFAULT_COUNTRY,
++            $scope,
++            $scopeCode
++        );
++        if($defaultCountry == 'GB') {
++            $currencyCodeMap['de'] = 'GBP';
++        }
++
+         return array_key_exists($paymentRegion, $currencyCodeMap) ? $currencyCodeMap[$paymentRegion] : '';
+     }
+ 
