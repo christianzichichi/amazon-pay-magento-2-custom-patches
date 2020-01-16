@@ -1,0 +1,10 @@
+--- a/src/Payment/Observer/IgnoreBillingAddressValidation.php
++++ b/src/Payment/Observer/IgnoreBillingAddressValidation.php
+@@ -26,6 +26,7 @@ public function execute(Observer $observer)
+         $quote = $observer->getEvent()->getQuote();
+         if (AmazonPayment::CODE === $quote->getPayment()->getMethod()) {
+             $quote->getBillingAddress()->setShouldIgnoreValidation(true);
++            $quote->getShippingAddress()->setShouldIgnoreValidation(true);
+         }
+     }
+ }
