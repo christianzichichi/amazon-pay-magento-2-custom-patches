@@ -1,17 +1,5 @@
-From e7027c3f8e688881fa950a216dbda2ad8269f0f6 Mon Sep 17 00:00:00 2001
-From: Mike Martin <mike@beargroup.com>
-Date: Tue, 14 Jan 2020 03:19:37 -0500
-Subject: [PATCH] ASD-43: disable shipping address validation for Amazon Pay
- orders
-
----
- src/Payment/Observer/IgnoreBillingAddressValidation.php | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/src/Payment/Observer/IgnoreBillingAddressValidation.php b/src/Payment/Observer/IgnoreBillingAddressValidation.php
-index ffed709f..61247657 100644
---- a/src/Payment/Observer/IgnoreBillingAddressValidation.php
-+++ b/src/Payment/Observer/IgnoreBillingAddressValidation.php
+--- a/Observer/IgnoreBillingAddressValidation.php
++++ b/Observer/IgnoreBillingAddressValidation.php
 @@ -26,6 +26,7 @@ public function execute(Observer $observer)
          $quote = $observer->getEvent()->getQuote();
          if (AmazonPayment::CODE === $quote->getPayment()->getMethod()) {
